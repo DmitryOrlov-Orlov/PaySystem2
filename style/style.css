@@ -1,0 +1,226 @@
+
+body {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: normal;   
+    margin: 0;
+    padding: 0;  
+    background-color: #ccc;
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+
+p {
+    margin: 0;
+    padding: 0; 
+}
+
+.container{
+    display: block;
+    width: 375px;
+    height: 708px;
+    background: #ffffff /* #ffffff */;
+    margin: 0 auto;
+}
+
+/* --------- то что встречается и в других частях кода(начало)--------- */
+.paragraph-gray {
+    color: #596273;
+    font-size: 11px;
+    margin-top: 15px;
+}
+/* --------- то что встречается и в других частях кода(конец) --------- */
+
+
+/* --------------HEADER(начало)----------------------- */
+
+
+header {
+    position: relative;
+    top: 15px;
+    max-width: 270px;
+    height: 65px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: 
+    "header-heading header-like"
+    "header-text header-text";
+    grid-template-rows: 80% 20%;
+    grid-template-columns: 4fr 22px;
+    margin-bottom: 60px;
+}
+
+.header-heading{
+    grid-area: header-heading;
+    font-size: 35px;
+}
+
+.header-text{
+    grid-area: header-text;
+}
+
+.header-heart{
+    grid-area: header-like;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin-top: 15px;
+    background: url(/img/one/heart.svg);
+}
+/* --------------HEADER(конец)----------------------- */
+
+
+
+/* --------------КАРУСЕЛЬ(начало)----------------------- */
+.carousel{
+    display: flex;
+    left: 0; 
+    width: 100%;
+    height: 305px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+.carousel-btn{
+    position: relative;
+    width: 72px;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+}
+
+.gallery{
+    display: flex;
+    position: absolute;
+    height: 100%;
+    left: -133px;
+    transition: margin-left 250ms;
+}
+.carousel-item{
+    display: flex;
+    justify-content: center;
+    width: 195px;
+    height: 290px;
+    background: #F6F6F8;
+    border-radius: 14px;
+    margin: 15px 9px 0;
+    position: relative;
+}
+.carousel-img-max{
+    display: block;
+    margin: 0 auto;
+    width: 168.34px;
+}
+
+
+.gallery-like{
+    position: absolute;
+    right: -10px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    background: url(/img/one/like.svg) center no-repeat;
+    border-radius: 50%;
+}
+
+/* --------------КАРУСЕЛЬ(конец)----------------------- */
+
+
+
+
+/* --------------ПАНЕЛЬ НАВИГАЦИИ(начало)----------------------- */
+nav {
+    max-width: 220px;
+    height: 55px;
+    background: #F6F6F8;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 50px;
+}
+.nav-btn {
+    width: 50px;
+    height: 50px;
+    background: seagreen;
+    border-radius: 50%;
+    border: none; 
+    outline: none;
+}
+.minus{
+    background: url(/img/one/btn-minus.svg) center no-repeat;
+}
+
+.plus {
+    background: url(/img/one/btn-plus.svg) center no-repeat;
+}
+
+.nav-quantity{
+    max-width: 120px;
+    font-size: 13px;
+    color: #979AA1;
+}
+/* --------------ПАНЕЛЬ НАВИГАЦИИ(конец)----------------------- */
+
+
+
+
+/* --------------ЦЕНА(начало)----------------------- */
+.first-page-price{
+    width: 110px;
+    height: 35px;
+    margin: 0 auto;
+    color: #252C3B;
+    font-size: 35px;
+    text-align: center;
+}
+/* --------------ЦЕНА(конец)----------------------- */
+
+
+
+/* --------------КРАЙНЯЯ КНОПКА НА СТРАНИЦЕ(начало)----------------------- */
+.block-btn-purchase-now{
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    
+}
+.btn-purchase-now{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #ffffff;
+    background: #FF416E;
+    text-decoration: none;
+}
+/* --------------КРАЙНЯЯ КНОПКА НА СТРАНИЦЕ(конец)----------------------- */
+
+
+
+/* --------------СЛУЖЕБНЫЯ ИНФОРМАЦИЯ(конец)----------------------- */
+.first-page-aside{
+    display: flex;
+    justify-content: space-between;
+    max-width: 150px;
+    height: 12px;   
+    margin: 0 auto;
+}
+.first-page-aside-text{
+    font-size: 9px;
+    color: #8F98A8;
+}
+.aside-icon{
+    width: 12px;
+    height: 12px;
+    background: url(/img/one/aside-icon.svg) center no-repeat;
+}
+/* --------------СЛУЖЕБНЫЯ ИНФОРМАЦИЯ(конец)----------------------- */
