@@ -6,7 +6,6 @@ var cardsData = [{
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
     totalPrice: 10.99,
-    totalAmount: 1,
     inBasket: true
 },
 {
@@ -17,7 +16,6 @@ var cardsData = [{
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
     totalPrice: 8.10,
-    totalAmount: 1,
     inBasket: true
 },
 {
@@ -28,7 +26,6 @@ var cardsData = [{
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
     totalPrice: 8.20,
-    totalAmount: 1,
     inBasket: true
 }]
 
@@ -78,23 +75,13 @@ function basketQuantity() {
 function basketQuantityChange(e) {
     let basketPriceAll = document.querySelectorAll('.basket-price');
     let id = Number(e.target.getAttribute('data-id'));
-    let res = (cardsData[id - 1].prise * e.target.value).toFixed(2);
+    let res = (cardsData[id - 1].totalPrice * e.target.value).toFixed(2);
     cardsData[id - 1].totalPrice = res;
     basketPriceAll[id - 1].innerHTML = `$${res}`;
     totalPrice();
-    basketTextP(id - 1, e);
 }
 basketQuantity();
 /*----------В КАЖДОМ ЭЛЕМЕНТЕ МЕНЯТЕСЯ ЦЕНА ЕСЛИ ИЗМЕНИТЬ РУКАМИ КОЛИЧЕСТВО(конец)----------*/
-
-
-/* -----ИЗМЕНИТЬ КОЛИЧЕСТВО БУТЫЛОК В СТРОКЕ(начало)----- */
-function basketTextP(elem, e) {
-    let basketTextP = document.querySelectorAll('.basket_text-p');
-    basketTextP[elem].innerHTML = `Quantity ${e.target.value} Bottle`;
-}
-/* -----ИЗМЕНИТЬ КОЛИЧЕСТВО БУТЫЛОК В СТРОКЕ(начало)----- */
-
 
 
 
@@ -103,8 +90,7 @@ let totalAmountPrice = document.querySelector('.totalAmount-price');
 function totalPrice() {
     cardsData.reduce((sum, current) => {
         totalAmountPrice.innerHTML = sum + Number(current.totalPrice);
-
-        return sum + Number(current.totalPrice);
+        return sum + Number(current.totalPrice.toFixed(2));
     }, 0);
 }
 /* totalAmountPrice.innerHTML = `$${totalPrise()}`; */
