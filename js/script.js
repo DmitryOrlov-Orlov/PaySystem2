@@ -5,6 +5,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/1min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 10.99,
     inBasket: true
 },
 {
@@ -14,6 +15,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/2min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.10,
     inBasket: true
 },
 {
@@ -23,6 +25,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/3min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.20,
     inBasket: true
 },
 {
@@ -32,6 +35,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/4min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 12.00,
     inBasket: false
 },
 {
@@ -41,6 +45,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/5min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.00,
     inBasket: false
 },
 {
@@ -50,6 +55,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/6min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.00,
     inBasket: false
 },
 {
@@ -59,6 +65,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/7min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.00,
     inBasket: false
 },
 {
@@ -68,6 +75,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/8min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.00,
     inBasket: false
 },
 {
@@ -77,6 +85,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/9min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.00,
     inBasket: false
 }]
 
@@ -119,7 +128,8 @@ document.querySelector('.next').onclick = function () {
         gallery.style.marginLeft = position + 'px';
         countId++;
         navQuantity.innerHTML = `Quantity ${cardsData[countId - 1].amount}`;
-        firstPagePrice.innerHTML = `$${cardsData[countId - 1].prise.toFixed(2)}`;
+        let firstPagePrice = document.querySelector('.first-page-price');
+        firstPagePrice.innerHTML = `$${cardsData[countId - 1].totalPrice.toFixed(2)}`;
     }
 }
 /* ----------СДВИГ ВЛЕВО ГАЛЛЕРЕНИИ (конец)--------- */
@@ -134,7 +144,8 @@ document.querySelector('.prev').onclick = function () {
         gallery.style.marginLeft = position + 'px';
         countId--;
         navQuantity.innerHTML = `Quantity ${cardsData[countId - 1].amount}`;
-        firstPagePrice.innerHTML = `$${cardsData[countId - 1].prise.toFixed(2)}`;
+        let firstPagePrice = document.querySelector('.first-page-price');
+        firstPagePrice.innerHTML = `$${cardsData[countId - 1].totalPrice.toFixed(2)}`;
     }
 }
 /* ----------СДВИГ ВПРАВО ГАЛЛЕРЕНИИ (конец)--------- */
@@ -145,11 +156,9 @@ document.querySelector('.prev').onclick = function () {
 document.querySelector('.header-heart').onclick = function () {
     let idLike = document.querySelectorAll('.idLike');
     let numCardsData = cardsData[countId - 1];
-
     if (numCardsData.inBasket == false) {
         numCardsData.inBasket = true;
         idLike[countId - 1].classList.add('gallery-like');
-
     } else {
         numCardsData.inBasket = false;
         idLike[countId - 1].classList.remove('gallery-like');
@@ -162,23 +171,36 @@ document.querySelector('.header-heart').onclick = function () {
 /* ----------ДОБАВИТЬ\УБАВИТЬ КОЛИЧЕСТВО БУТЫЛОЧЕК(начало)--------------- */
 let navQuantity = document.querySelector('.nav-quantity');
 navQuantity.innerHTML = `Quantity ${cardsData[countId - 1].amount}`;
-
 document.querySelector('.minus').onclick = function () {
     if (cardsData[countId - 1].amount >= 1) {
         cardsData[countId - 1].amount--;
         navQuantity.innerHTML = `Quantity ${cardsData[countId - 1].amount}`;
+        totalPrise();
     }
 }
-
 document.querySelector('.plus').onclick = function () {
     cardsData[countId - 1].amount++;
     navQuantity.innerHTML = `Quantity ${cardsData[countId - 1].amount}`;
+    totalPrise();
+
 }
 /* ----------ДОБАВИТЬ УБАВИТЬ КОЛИЧЕСТВО БУТЫЛОЧЕК(начало)--------------- */
 
 
 
-/* ----------ЦЕНА У ЭЛЕМЕНТОВ МАССИВА (начало)-------------------- */
-let firstPagePrice = document.querySelector('.first-page-price');
-firstPagePrice.innerHTML = `$${cardsData[countId - 1].prise.toFixed(2)}`;
-/* ----------ЦЕНА У ЭЛЕМЕНТОВ МАССИВА (конец)-------------------- */
+/*-----ЦЕНА ОТДЕЛЬНО ДЛЯ КАЖДОГО ЭЛЕМЕНТА_СДВИГ(начало)-----*/
+function totalPrise() {
+    console.log(cardsData[countId - 1].id);
+
+    console.log('до ' + cardsData[countId - 1].totalPrice);
+    cardsData[countId - 1].totalPrice = (cardsData[countId - 1].amount * cardsData[countId - 1].prise).toFixed(2);
+    console.log('после ' + cardsData[countId - 1].totalPrice);
+
+    let firstPagePrice = document.querySelector('.first-page-price');
+    firstPagePrice.innerHTML = `$${cardsData[countId - 1].totalPrice}`;
+}
+totalPrise();
+
+
+
+/*-----ЦЕНА ОТДЕЛЬНО ДЛЯ КАЖДОГО ЭЛЕМЕНТА_СДВИГ(начало)-----*/

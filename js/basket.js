@@ -5,6 +5,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/1min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 10.99,
     inBasket: true
 },
 {
@@ -14,6 +15,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/2min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.10,
     inBasket: true
 },
 {
@@ -23,6 +25,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/3min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
+    totalPrice: 8.20,
     inBasket: true
 }]
 
@@ -72,10 +75,10 @@ function basketQuantity() {
 function basketQuantityChange(e) {
     let basketPriceAll = document.querySelectorAll('.basket-price');
     let id = Number(e.target.getAttribute('data-id'));
-    let res = (cardsData[id - 1].prise * e.target.value).toFixed(2);
-    cardsData[id - 1].prise = res;
+    let res = (cardsData[id - 1].totalPrice * e.target.value).toFixed(2);
+    cardsData[id - 1].totalPrice = res;
     basketPriceAll[id - 1].innerHTML = `$${res}`;
-    totalPrise();
+    totalPrice();
 }
 basketQuantity();
 /*----------В КАЖДОМ ЭЛЕМЕНТЕ МЕНЯТЕСЯ ЦЕНА ЕСЛИ ИЗМЕНИТЬ РУКАМИ КОЛИЧЕСТВО(конец)----------*/
@@ -84,13 +87,13 @@ basketQuantity();
 
 /*----------ОБЩАЯ ЦЕНА (начало)----------*/
 let totalAmountPrice = document.querySelector('.totalAmount-price');
-function totalPrise() {
+function totalPrice() {
     cardsData.reduce((sum, current) => {
-        totalAmountPrice.innerHTML = `$${sum + Number(current.prise)}`
-        return sum + Number(current.prise);
+        totalAmountPrice.innerHTML = sum + Number(current.totalPrice);
+        return sum + Number(current.totalPrice.toFixed(2));
     }, 0);
 }
-totalPrise();
+/* totalAmountPrice.innerHTML = `$${totalPrise()}`; */
 /*----------ОБЩАЯ ЦЕНА (конец)----------*/
 
 
@@ -112,15 +115,21 @@ function itemToBasket() {
 
 
 /*----------КНОПКА УДАЛЕНИЯ ПОЗИЦИИ ИЗ КОРЗИНЫ(начало)----------*/
+
 const basketCancelingAll = document.querySelectorAll('.basket-canceling');
 basketCancelingAll.forEach(elem => {
     elem.onclick = basketCancelDelete;
 })
+
+
 function basketCancelDelete(e) {
     let id = e.target.getAttribute('data-id');
     cardsData[id - 1].inBasket = false;
     basket();
     itemToBasket();
+    cardsData.forEach(elem => {
+        console.log(elem.inBasket);
+    });
 }
 
 
