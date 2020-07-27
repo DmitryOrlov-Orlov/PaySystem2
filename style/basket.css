@@ -62,7 +62,7 @@
 }
 
 .basket::-webkit-scrollbar{
-    width: 5px;
+    width: 0;
 }
   
 .basket::-webkit-scrollbar-thumb{
@@ -115,7 +115,7 @@
     color: #252B35;
     margin-left: 35px;
     border: 1px solid #818A99;
-    outline:none;
+    outline: none;
     text-align: center;
     background-color: #F6F6F8;
 }
