@@ -127,6 +127,7 @@ function renderList() {
     /* рубрика ОБЩАЯ ЦЕНА */
     function totalAmountPrice() {
         let totalAmountPrice = document.querySelector('.totalAmount-price');
+
         let totalAmountPriceItem = cardsData.reduce((sum, elem) => {
             return sum + Number(elem.prise * elem.amount)
         }, 0);
@@ -159,6 +160,7 @@ function renderList() {
     function basketCancelDelete(e) {
         let id = e.target.getAttribute('data-id');
         cardsData[id - 1].inBasket = false;
+        cardsData[id - 1].amount = 0;
         renderList();
     }
     /*----------КНОПКА УДАЛЕНИЯ ПОЗИЦИИ ИЗ КОРЗИНЫ(конец)----------*/
