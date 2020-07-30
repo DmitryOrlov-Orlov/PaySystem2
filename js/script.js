@@ -1,36 +1,39 @@
-var cardsData = [{
+/* var cardsData = [{
     id: 1,
     name: "Golden fruit jam",
-    prise: 10.99,
+    prise: 10,
     imgPathMin: "/img/imgPathMin/1min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 10.99,
+    totalPrice: 10,
     inBasket: false
 },
 {
     id: 2,
     name: "Golden fruit jam",
-    prise: 8.10,
+    prise: 15,
     imgPathMin: "/img/imgPathMin/2min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 8.10,
+    totalPrice: 15,
     inBasket: false
 },
 {
     id: 3,
     name: "Golden fruit jam",
-    prise: 8.20,
+    prise: 20,
     imgPathMin: "/img/imgPathMin/3min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 8.20,
+    totalPrice: 20,
     inBasket: false
 },
-]
+] */
 
 
+let ls = localStorage.getItem('cardsData');
+cardsData = JSON.parse(ls);
+console.log(cardsData);
 
 /* -----КАРУСЕЛЬ(начало)-------- */
 function createGallery() {
@@ -94,49 +97,73 @@ document.querySelector('.prev').onclick = function () {
 
 
 /* ----------ЛАЙК, ДОБАВИТЬ В КОРЗИНУ изменит занчение в карзине на true или на false (начало)--------- */
+let idLike = document.querySelectorAll('.idLike');
 document.querySelector('.header-heart').onclick = function () {
-    let idLike = document.querySelectorAll('.idLike');
+
     let numCardsData = cardsData[countId];
     if (numCardsData.inBasket == false) {
         numCardsData.inBasket = true;
         idLike[countId].classList.add('gallery-like');
+
     } else {
         numCardsData.inBasket = false;
         idLike[countId].classList.remove('gallery-like');
     }
+    local();
 }
 /* ----------ЛАЙК, ДОБАВИТЬ В КОРЗИНУ изменит занчение в карзине на true или на false (конец)--------- */
+
+/* элемент добавлен в корзину если в локале добавен (считали) */
+cardsData.forEach(elem => {
+    if (elem.inBasket) {
+        idLike[elem.id - 1].classList.add('gallery-like');
+    }
+});
+
 
 
 
 /* ----------ДОБАВИТЬ\УБАВИТЬ КОЛИЧЕСТВО БУТЫЛОЧЕК(начало)--------------- */
 let navQuantity = document.querySelector('.nav-quantity');
 navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
+
 document.querySelector('.minus').onclick = function () {
     if (cardsData[countId].amount >= 1) {
         cardsData[countId].amount--;
         navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
         totalPrise();
+        local();
     }
 }
+
 document.querySelector('.plus').onclick = function () {
     cardsData[countId].amount++;
     navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
     totalPrise();
-
+    local();
 }
 /* ----------ДОБАВИТЬ УБАВИТЬ КОЛИЧЕСТВО БУТЫЛОЧЕК(начало)--------------- */
 
 
 
 /*-----ЦЕНА ОТДЕЛЬНО ДЛЯ КАЖДОГО ЭЛЕМЕНТА_СДВИГ(начало)-----*/
+let firstPagePrice = document.querySelector('.first-page-price');
 function totalPrise() {
     cardsData[countId].totalPrice = (cardsData[countId].amount * cardsData[countId].prise).toFixed(2);
-    let firstPagePrice = document.querySelector('.first-page-price');
     firstPagePrice.innerHTML = `$${cardsData[countId].totalPrice}`;
 }
 totalPrise();
 
+cardsData.forEach(elem => {
+    console.log(elem.amount * elem.prise);
+    elem.totalPrice = (elem.amount * elem.prise).toFixed(2);
+    firstPagePrice.innerHTML = `$${elem.totalPrice}`;
+});
 
 
-/*-----ЦЕНА ОТДЕЛЬНО ДЛЯ КАЖДОГО ЭЛЕМЕНТА_СДВИГ(начало)-----*/
+
+function local() {
+    localStorage.setItem('cardsData', JSON.stringify(cardsData));
+}
+local();
+

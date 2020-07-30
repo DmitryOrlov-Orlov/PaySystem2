@@ -1,4 +1,4 @@
-var cardsData = [{
+/* var cardsData = [{
     id: 1,
     name: "Golden fruit jam",
     prise: 2,
@@ -57,9 +57,16 @@ var cardsData = [{
     amount: 1,
     totalPrice: 0,
     inBasket: true
-}]
+}] */
+
+/* window.addEventListener('storage', function (e) {
+    console.log('change');
+}) */
 
 
+let ls = localStorage.getItem('cardsData');
+let cardsData = JSON.parse(ls);
+console.log(cardsData);
 
 function renderList() {
     /*---------- ЭЛЕМЕНТЫ В КОРЗИНЕ У КОТОРЫХ TRUE(начало)----------*/
@@ -88,7 +95,6 @@ function renderList() {
             <div class="basket-canceling" data-id=${product.id}></div>
         </div>
         `
-
         }
         return basketItem;
     }
@@ -102,7 +108,6 @@ function renderList() {
         basketQuantityAll.forEach(elem => {
             elem.onchange = basketQuantityChange;
         });
-        console.log(basketQuantityAll);
     }
 
     function basketQuantityChange(e) {
@@ -114,12 +119,12 @@ function renderList() {
         let basketPriceAll = document.querySelectorAll('.basket-price');
         basketPriceAll[id - 1].innerHTML = `$${(cardsData[id - 1].prise * eTargetValue).toFixed(2)}`;
 
+
         /* рубрика ПРОСТО КОЛ-ВО БУТЫЛОЧЕК в позиции */
         let basketTextPAll = document.querySelectorAll('.basket_text-p');
         basketTextPAll[id - 1].innerHTML = `Quantity ${eTargetValue} Bottle`;
 
         /* рубрика ОБЩАЯ ЦЕНА */
-
         totalAmountPrice();
     }
     basketQuantity();
@@ -127,17 +132,21 @@ function renderList() {
     /* рубрика ОБЩАЯ ЦЕНА */
     function totalAmountPrice() {
         let totalAmountPrice = document.querySelector('.totalAmount-price');
+        let totalAmountPriceItem = 0;
+        cardsData.forEach(elem => {
+            if (elem.inBasket) {
+                totalAmountPriceItem += elem.amount * elem.prise;
+            }
 
-        let totalAmountPriceItem = cardsData.reduce((sum, elem) => {
-            return sum + Number(elem.prise * elem.amount)
-        }, 0);
+            console.log(totalAmountPriceItem);
+        });
         totalAmountPrice.innerHTML = totalAmountPriceItem.toFixed(2);
     }
     totalAmountPrice();
 
 
 
-    /*----------КОЛИЧЕСТВО ПОЗИЦИЙ В КОРЗИНЕ(начало)----------*/
+    /*----------КОЛИЧЕСТВО ПОЗИЦИЙ В КОРЗИНЕ(начало)----------этот код можно добавить в ОБЩАЯ Цена и код уменьшится*/
     function itemToBasket() {
         let sumInBasketTrue = 0;
         cardsData.forEach(elem => {
@@ -159,11 +168,15 @@ function renderList() {
     })
     function basketCancelDelete(e) {
         let id = e.target.getAttribute('data-id');
+        console.log('до ' + cardsData[id - 1].inBasket);
         cardsData[id - 1].inBasket = false;
+        console.log('после ' + cardsData[id - 1].inBasket);
         cardsData[id - 1].amount = 0;
+        /* localStorage.setItem('cardsData', JSON.stringify(cardsData)); */
         renderList();
     }
     /*----------КНОПКА УДАЛЕНИЯ ПОЗИЦИИ ИЗ КОРЗИНЫ(конец)----------*/
+
+
 }
 renderList();
-
