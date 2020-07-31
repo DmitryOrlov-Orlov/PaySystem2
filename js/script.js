@@ -11,29 +11,30 @@
 {
     id: 2,
     name: "Golden fruit jam",
-    prise: 15,
+    prise: 50,
     imgPathMin: "/img/imgPathMin/2min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 15,
+    totalPrice: 50,
     inBasket: false
 },
 {
     id: 3,
     name: "Golden fruit jam",
-    prise: 20,
+    prise: 70,
     imgPathMin: "/img/imgPathMin/3min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 20,
+    totalPrice: 70,
     inBasket: false
 },
 ] */
 
 
-let ls = localStorage.getItem('cardsData');
+/* let ls = localStorage.getItem('cardsData');
 cardsData = JSON.parse(ls);
-console.log(cardsData);
+console.log(cardsData); */
+
 
 /* -----КАРУСЕЛЬ(начало)-------- */
 function createGallery() {
@@ -109,7 +110,7 @@ document.querySelector('.header-heart').onclick = function () {
         numCardsData.inBasket = false;
         idLike[countId].classList.remove('gallery-like');
     }
-    local();
+    /* local(); */
 }
 /* ----------ЛАЙК, ДОБАВИТЬ В КОРЗИНУ изменит занчение в карзине на true или на false (конец)--------- */
 
@@ -132,7 +133,7 @@ document.querySelector('.minus').onclick = function () {
         cardsData[countId].amount--;
         navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
         totalPrise();
-        local();
+        /* local(); */
     }
 }
 
@@ -140,7 +141,7 @@ document.querySelector('.plus').onclick = function () {
     cardsData[countId].amount++;
     navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
     totalPrise();
-    local();
+    /* local(); */
 }
 /* ----------ДОБАВИТЬ УБАВИТЬ КОЛИЧЕСТВО БУТЫЛОЧЕК(начало)--------------- */
 
@@ -154,16 +155,11 @@ function totalPrise() {
 }
 totalPrise();
 
-cardsData.forEach(elem => {
-    console.log(elem.amount * elem.prise);
-    elem.totalPrice = (elem.amount * elem.prise).toFixed(2);
-    firstPagePrice.innerHTML = `$${elem.totalPrice}`;
-});
 
 
 
-function local() {
+/* function local() {
     localStorage.setItem('cardsData', JSON.stringify(cardsData));
 }
-local();
+local(); */
 

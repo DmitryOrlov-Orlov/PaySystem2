@@ -1,4 +1,4 @@
-/* var cardsData = [{
+var cardsData = [{
     id: 1,
     name: "Golden fruit jam",
     prise: 2,
@@ -57,16 +57,16 @@
     amount: 1,
     totalPrice: 0,
     inBasket: true
-}] */
+}]
 
 /* window.addEventListener('storage', function (e) {
     console.log('change');
 }) */
 
 
-let ls = localStorage.getItem('cardsData');
+/* let ls = localStorage.getItem('cardsData');
 let cardsData = JSON.parse(ls);
-console.log(cardsData);
+console.log(cardsData); */
 
 function renderList() {
     /*---------- ЭЛЕМЕНТЫ В КОРЗИНЕ У КОТОРЫХ TRUE(начало)----------*/

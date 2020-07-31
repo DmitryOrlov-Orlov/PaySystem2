@@ -5,7 +5,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/1min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 0,
+    totalPrice: 10,
     inBasket: false
 },
 {
@@ -15,7 +15,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/2min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 0,
+    totalPrice: 15,
     inBasket: false
 },
 {
@@ -25,7 +25,7 @@ var cardsData = [{
     imgPathMin: "/img/imgPathMin/3min.svg",
     imgPathMax: "/img/imgPathMax/1.svg",
     amount: 1,
-    totalPrice: 0,
+    totalPrice: 20,
     inBasket: false
 },
 ]
