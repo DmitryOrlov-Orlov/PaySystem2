@@ -1,4 +1,4 @@
-var cardsData = [{
+/* var cardsData = [{
     id: 1,
     name: "Golden fruit jam",
     prise: 10,
@@ -30,4 +30,12 @@ var cardsData = [{
 },
 ]
 
-localStorage.setItem('cardsData', JSON.stringify(cardsData));
+localStorage.setItem('cardsData', JSON.stringify(cardsData)); */
+
+
+window.addEventListener('storage', function (e) {
+    ls = localStorage.getItem('cardsData');
+    let cardsData = JSON.parse(ls);
+    document.querySelector('.out').innerHTML = cardsData[1].inBasket;
+})
+

@@ -1,4 +1,4 @@
-/* var cardsData = [{
+var cardsData = [{
     id: 1,
     name: "Golden fruit jam",
     prise: 10,
@@ -28,7 +28,7 @@
     totalPrice: 70,
     inBasket: false
 },
-] */
+]
 
 
 /* let ls = localStorage.getItem('cardsData');
@@ -110,7 +110,7 @@ document.querySelector('.header-heart').onclick = function () {
         numCardsData.inBasket = false;
         idLike[countId].classList.remove('gallery-like');
     }
-    /* local(); */
+    local();
 }
 /* ----------ЛАЙК, ДОБАВИТЬ В КОРЗИНУ изменит занчение в карзине на true или на false (конец)--------- */
 
@@ -133,7 +133,7 @@ document.querySelector('.minus').onclick = function () {
         cardsData[countId].amount--;
         navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
         totalPrise();
-        /* local(); */
+        local();
     }
 }
 
@@ -141,7 +141,7 @@ document.querySelector('.plus').onclick = function () {
     cardsData[countId].amount++;
     navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
     totalPrise();
-    /* local(); */
+    local();
 }
 /* ----------ДОБАВИТЬ УБАВИТЬ КОЛИЧЕСТВО БУТЫЛОЧЕК(начало)--------------- */
 
@@ -158,8 +158,8 @@ totalPrise();
 
 
 
-/* function local() {
+function local() {
     localStorage.setItem('cardsData', JSON.stringify(cardsData));
 }
-local(); */
+local();
 
