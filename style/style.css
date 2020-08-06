@@ -151,6 +151,9 @@ nav {
     border: none; 
     outline: none;
 }
+
+
+
 .minus{
     background: url(/img/one/btn-minus.svg) center no-repeat;
 }
@@ -158,6 +161,7 @@ nav {
 .plus {
     background: url(/img/one/btn-plus.svg) center no-repeat;
 }
+
 
 .nav-quantity{
     max-width: 120px;
@@ -201,6 +205,10 @@ nav {
     color: #ffffff;
     background: #FF416E;
     text-decoration: none;
+}
+
+.btn-purchase-now:focus {
+    background: #fda7bb;
 }
 /* --------------КРАЙНЯЯ КНОПКА НА СТРАНИЦЕ(конец)----------------------- */
 

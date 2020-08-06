@@ -1,3 +1,5 @@
+
+
 var cardsData = [{
     id: 1,
     name: "Golden fruit jam",
@@ -106,6 +108,7 @@ document.querySelector('.header-heart').onclick = function () {
         numCardsData.inBasket = true;
         idLike[countId].classList.add('gallery-like');
 
+
     } else {
         numCardsData.inBasket = false;
         idLike[countId].classList.remove('gallery-like');
@@ -162,4 +165,3 @@ function local() {
     localStorage.setItem('cardsData', JSON.stringify(cardsData));
 }
 local();
-

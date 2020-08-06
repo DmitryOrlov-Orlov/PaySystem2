@@ -213,4 +213,9 @@
     line-height: 13px;
     color: #FFFFFF; 
     background: #475062;
+    text-decoration: none;
+}
+
+.btnProcess:focus {
+    background: #cfcece;
 }

@@ -1,75 +1,19 @@
-/* var cardsData = [{
-    id: 1,
-    name: "Golden fruit jam",
-    prise: 2,
-    imgPathMin: "/img/imgPathMin/1min.svg",
-    imgPathMax: "/img/imgPathMax/1.svg",
-    amount: 1,
-    totalPrice: 0,
-    inBasket: true
-},
-{
-    id: 2,
-    name: "Golden fruit",
-    prise: 3,
-    imgPathMin: "/img/imgPathMin/2min.svg",
-    imgPathMax: "/img/imgPathMax/1.svg",
-    amount: 1,
-    totalPrice: 0,
-    inBasket: true
-},
-{
-    id: 3,
-    name: "Golden",
-    prise: 5,
-    imgPathMin: "/img/imgPathMin/3min.svg",
-    imgPathMax: "/img/imgPathMax/1.svg",
-    amount: 1,
-    totalPrice: 0,
-    inBasket: true
-},
-{
-    id: 4,
-    name: "Golden",
-    prise: 3.20,
-    imgPathMin: "/img/imgPathMin/3min.svg",
-    imgPathMax: "/img/imgPathMax/1.svg",
-    amount: 1,
-    totalPrice: 0,
-    inBasket: true
-},
-{
-    id: 5,
-    name: "Golden",
-    prise: 2.20,
-    imgPathMin: "/img/imgPathMin/3min.svg",
-    imgPathMax: "/img/imgPathMax/1.svg",
-    amount: 1,
-    totalPrice: 0,
-    inBasket: true
-},
-{
-    id: 6,
-    name: "Golden",
-    prise: 1.20,
-    imgPathMin: "/img/imgPathMin/3min.svg",
-    imgPathMax: "/img/imgPathMax/1.svg",
-    amount: 1,
-    totalPrice: 0,
-    inBasket: true
-}] */
-
-
 window.addEventListener('storage', function (e) {
+    console.log(e.target.localStorage);
     ls = localStorage.getItem('cardsData');
     let cardsData = JSON.parse(ls);
+    console.log(cardsData);
+
+
 
     function renderList() {
+
 
         /*---------- ЭЛЕМЕНТЫ В КОРЗИНЕ У КОТОРЫХ TRUE(начало)----------*/
         function basket() {
             let basket = document.querySelector('.basket');
             basket.innerHTML = '';
+
             cardsData.forEach(elem => {
                 let basketToAdd = basketItem(elem);
                 basket.appendChild(basketToAdd);
@@ -114,11 +58,11 @@ window.addEventListener('storage', function (e) {
             console.log('id = ' + id);
             let eTargetValue = e.target.value;
             cardsData[id - 1].amount = eTargetValue;
+            localStorage.setItem('cardsData', JSON.stringify(cardsData));
             console.log(cardsData[id - 1].amount);
 
             /* рубрика ОБЩАЯ ЦЕНА ДЛЯ ОТДЕЛЬНОЙ ПОЗИЦИИ */
             let basketPriceAll = document.querySelectorAll('.basket-price');
-
             basketPriceAll[id - 1].innerHTML = `$${(cardsData[id - 1].prise * eTargetValue).toFixed(2)}`;
 
 
@@ -175,7 +119,7 @@ window.addEventListener('storage', function (e) {
             cardsData[id - 1].inBasket = false;
             console.log('после ' + cardsData[id - 1].inBasket);
             cardsData[id - 1].amount = 0;
-            /* localStorage.setItem('cardsData', JSON.stringify(cardsData)); */
+            localStorage.setItem('cardsData', JSON.stringify(cardsData));
             renderList();
         }
         /*----------КНОПКА УДАЛЕНИЯ ПОЗИЦИИ ИЗ КОРЗИНЫ(конец)----------*/
