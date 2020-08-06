@@ -1,5 +1,3 @@
-
-
 var cardsData = [{
     id: 1,
     name: "Golden fruit jam",
@@ -33,10 +31,18 @@ var cardsData = [{
 ]
 
 
-/* let ls = localStorage.getItem('cardsData');
-cardsData = JSON.parse(ls);
-console.log(cardsData); */
-
+const ls = localStorage.getItem('cardsData');
+const cardsDataLs = JSON.parse(ls);
+if (cardsDataLs) {
+    cardsDataLs.forEach(c => {
+        if (c.inBasket) {
+            const i = cardsData.findIndex(y => y.id === c.id);
+            if (i > -1) {
+                cardsData[i] = c;
+            }
+        }
+    })
+}
 
 /* -----КАРУСЕЛЬ(начало)-------- */
 function createGallery() {
@@ -126,7 +132,6 @@ cardsData.forEach(elem => {
 
 
 
-
 /* ----------ДОБАВИТЬ\УБАВИТЬ КОЛИЧЕСТВО БУТЫЛОЧЕК(начало)--------------- */
 let navQuantity = document.querySelector('.nav-quantity');
 navQuantity.innerHTML = `Quantity ${cardsData[countId].amount}`;
@@ -157,7 +162,6 @@ function totalPrise() {
     firstPagePrice.innerHTML = `$${cardsData[countId].totalPrice}`;
 }
 totalPrise();
-
 
 
 
