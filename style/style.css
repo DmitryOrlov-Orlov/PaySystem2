@@ -20,7 +20,8 @@ p {
     display: block;
     width: 375px;
     height: 708px;
-    background: #ffffff /* #ffffff */;
+    
+    background: #ffffff;
     margin: 0 auto;
 }
 
