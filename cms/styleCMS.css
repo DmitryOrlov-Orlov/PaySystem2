@@ -45,8 +45,13 @@ h3{
     margin-left: 20px;
     width: 210px;
 }
+.twoBtn{
+    display: flex;
 
-.buttonAdd{
+}
+
+
+.btn{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,6 +64,13 @@ h3{
     color: #FFFFFF; 
     background: #475062;
     text-decoration: none;
+}
+
+.badd {
+    width: 130px;
+}
+.rem {
+    width: 130px;
 }
 
 .out {

@@ -11,6 +11,60 @@ fetch('http://localhost:3000/goods')
                 let listItemAdd = listItem(item);
                 list.appendChild(listItemAdd);
             });
+
+
+            /* навесил события на кнопки удаления */
+            const btnDelAll = document.querySelectorAll('.list-basket-canceling');
+            btnDelAll.forEach(item => {
+                item.onclick = funcDel;
+            })
+
+
+            /* навесил события на кнопки редактировать */
+            let btnRed = document.querySelectorAll('.list-red');
+            btnRed.forEach(item => {
+                item.onclick = funcRed;
+            });
+
+            /* function funcRed(e) {
+
+                fetch('http://localhost:3000/goods', {
+                    method: 'put',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then()
+
+
+
+
+
+                console.log(cardsData);
+                let id = e.target.getAttribute('data-id');
+                name.value = cardsData[id - 1].name;
+                price.value = +cardsData[id - 1].prise;
+                imgMax.value = cardsData[id - 1].imgPathMax;
+                imgMin.value = cardsData[id - 1].imgPathMin;
+
+                let btnRemove = document.querySelector('.rem');
+                btnRemove.onclick = function () {
+                    cardsData[id - 1].name = name.value;
+                    cardsData[id - 1].prise = +price.value;
+                    cardsData[id - 1].imgPathMax = imgMax.value;
+                    cardsData[id - 1].imgPathMin = imgMin.value;
+                    console.log(cardsData[id - 1].name);
+                }
+
+            } */
+
+
+
+
+
+
+
         }
         function listItem(product) {
             let basketItem = document.createElement('div');
@@ -20,7 +74,7 @@ fetch('http://localhost:3000/goods')
                     <div class="list-icon" style="background-image:url(${product.imgPathMin}"></div>
                     <div class="list-name">${product.name}</div>
                     <div class="list-price">$${product.prise}</div>
-                    <div class="list-red" data-id-red=${product.id}>РЕД</div>
+                    <button class="list-red" data-id=${product.id}>РЕД</button>
                     <div class="list-basket-canceling" data-id=${product.id}></div>
                 </div>
                 `
@@ -62,7 +116,7 @@ imgMin.onchange = function () {
 }
 
 let out = document.querySelector('.out');
-let buttonAdd = document.querySelector('.buttonAdd');
+let buttonAdd = document.querySelector('.badd');
 buttonAdd.onclick = function (e) {
     e.preventDefault();
 
@@ -79,4 +133,15 @@ buttonAdd.onclick = function (e) {
         })
     }
 }
+
+function funcDel(e) {
+    let id = e.target.getAttribute('data-id');
+    fetch('http://localhost:3000/goods/' + id, {
+        method: 'delete'
+    })
+}
+
+
+
+
 
