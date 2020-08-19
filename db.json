@@ -29,26 +29,6 @@
       "amount": 1,
       "totalPrice": 70,
       "inBasket": false
-    },
-    {
-      "id": 4,
-      "name": "Golden fruit jam",
-      "prise": 170,
-      "imgPathMin": "/img/imgPathMin/3min.svg",
-      "imgPathMax": "/img/imgPathMax/1.svg",
-      "amount": 1,
-      "totalPrice": 170,
-      "inBasket": false
-    },
-    {
-      "name": "1",
-      "prise": "2",
-      "imgPathMin": "4",
-      "imgPathMax": "3",
-      "amount": "1",
-      "totalPrice": "2",
-      "inBasket": "false",
-      "id": 5
     }
   ]
 }

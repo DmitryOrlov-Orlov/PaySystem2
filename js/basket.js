@@ -1,6 +1,7 @@
 function renderList() {
     ls = localStorage.getItem('cardsData');
     let cardsData = JSON.parse(ls);
+
     /*---------- ЭЛЕМЕНТЫ В КОРЗИНЕ У КОТОРЫХ TRUE(начало)----------*/
     function basket() {
         let basket = document.querySelector('.basket');
@@ -98,6 +99,7 @@ function renderList() {
 
     /*----------КНОПКА УДАЛЕНИЯ ПОЗИЦИИ ИЗ КОРЗИНЫ(начало)----------*/
     let basketCancelingAll = document.querySelectorAll('.basket-canceling');
+    console.log(basketCancelingAll);
     basketCancelingAll.forEach(elem => {
         elem.onclick = basketCancelDelete;
     })
@@ -113,3 +115,5 @@ function renderList() {
     /*----------КНОПКА УДАЛЕНИЯ ПОЗИЦИИ ИЗ КОРЗИНЫ(конец)----------*/
 }
 renderList();
+
+

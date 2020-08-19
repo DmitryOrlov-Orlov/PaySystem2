@@ -12,10 +12,15 @@ fetch('http://localhost:3000/goods')
                     const i = cardsData.findIndex(y => y.id === c.id);
                     if (i > -1) {
                         cardsData[i] = c;
+
                     }
                 }
+
             })
         }
+
+
+
 
         /* -----КАРУСЕЛЬ(начало)-------- */
         function createGallery() {
