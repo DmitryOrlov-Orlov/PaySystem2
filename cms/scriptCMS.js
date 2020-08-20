@@ -26,22 +26,8 @@ fetch('http://localhost:3000/goods')
                 item.onclick = funcRed;
             });
 
-            /* function funcRed(e) {
-
-                fetch('http://localhost:3000/goods', {
-                    method: 'put',
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8'
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then()
-
-
-
-
-
-                console.log(cardsData);
+            function funcRed(e) {
+                console.log(e);
                 let id = e.target.getAttribute('data-id');
                 name.value = cardsData[id - 1].name;
                 price.value = +cardsData[id - 1].prise;
@@ -55,15 +41,17 @@ fetch('http://localhost:3000/goods')
                     cardsData[id - 1].imgPathMax = imgMax.value;
                     cardsData[id - 1].imgPathMin = imgMin.value;
                     console.log(cardsData[id - 1].name);
+                    /* fetch('http://localhost:3000/goods', {
+                        method: 'put',
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8'
+                        },
+                        body: JSON.stringify(cardsData)
+                    }) */
                 }
 
-            } */
 
-
-
-
-
-
+            }
 
         }
         function listItem(product) {
@@ -140,8 +128,3 @@ function funcDel(e) {
         method: 'delete'
     })
 }
-
-
-
-
-
