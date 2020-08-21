@@ -33,21 +33,26 @@ fetch('http://localhost:3000/goods')
                 price.value = +cardsData[id - 1].prise;
                 imgMax.value = cardsData[id - 1].imgPathMax;
                 imgMin.value = cardsData[id - 1].imgPathMin;
+                console.log(name.value);
+
 
                 let btnRemove = document.querySelector('.rem');
+
                 btnRemove.onclick = function () {
+                    console.log(cardsData[id - 1].name);
+
                     cardsData[id - 1].name = name.value;
                     cardsData[id - 1].prise = +price.value;
                     cardsData[id - 1].imgPathMax = imgMax.value;
                     cardsData[id - 1].imgPathMin = imgMin.value;
-                    console.log(cardsData[id - 1].name);
-                    /* fetch('http://localhost:3000/goods', {
+                    console.log(cardsData.name);
+                    fetch('http://localhost:3000/goods/' + id, {
                         method: 'put',
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8'
                         },
-                        body: JSON.stringify(cardsData)
-                    }) */
+                        body: JSON.stringify(cardsData[id - 1])
+                    })
                 }
 
 
